@@ -1,16 +1,5 @@
 {
   "compilerOptions": {
-    "plugins": [
-      {
-        "name": "typescript-plugin-css-modules",
-        "options": {
-          "allowUnknownClassnames": true,
-          "classnameTransform": "camelCase",
-          "goToDefinition": true
-        }
-      }
-    ],
-
     "target": "esnext",
     "module": "esnext",
     "strict": true,
@@ -48,13 +37,8 @@
     "src/**/*.tsx",
     "src/**/*.vue",
     "tests/**/*.ts",
-    "tests/**/*.tsx",
   ],
   "exclude": [
     "node_modules"
-  ],
+  ]
 }
-
-
-
-

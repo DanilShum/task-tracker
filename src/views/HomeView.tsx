@@ -12,8 +12,17 @@ export default defineComponent({
   render() {
     return (
       <div>
-        <BaseButton text={"en"} whenClick={() => this.setI18nLanguage("en")} />
-        <BaseButton text={"ru"} whenClick={() => this.setI18nLanguage("ru")} />
+        <BaseButton
+          text={"en"}
+          color="blue"
+          whenClick={() => this.setI18nLanguage("en")}
+        />
+
+        <BaseButton
+          variant="secondary"
+          text={"ru"}
+          whenClick={() => this.setI18nLanguage("ru")}
+        />
 
         <span>{this.$t("auth.login")}</span>
         <span>/{this.$i18n.locale}</span>

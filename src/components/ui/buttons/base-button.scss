@@ -1,0 +1,112 @@
+@mixin flat($color: $grey) {
+  color: $color;
+
+  &:hover {
+    background-color: rgba($color, 0.05);
+  }
+  &:active,
+  &:focus-visible {
+    background-color: rgba($color, 0.1);
+  }
+}
+
+@mixin secondary($color: $grey) {
+  color: $color;
+  background-color: rgba($color, 0.1);
+
+  &:focus-visible {
+    background-color: rgba($color, 0.2);
+  }
+  &:hover {
+    background-color: rgba($color, 0.15);
+  }
+  &:active {
+    background-color: rgba($color, 0.25);
+  }
+}
+@mixin primary($color: $grey) {
+  color: $white;
+  background-color: $color;
+  font-weight: $bold;
+
+  &:focus-visible {
+    background-color: darken($color, 10%);
+  }
+
+  &:hover {
+    background-color: darken($color, 5%);
+  }
+
+  &:active {
+    background-color: darken($color, 12.5%);
+  }
+}
+
+.base-button {
+  font-family: $font-family;
+  transition: color 150ms ease-in, background-color 150ms ease-in;
+
+  &.base-button_disabled {
+    pointer-events: none;
+    opacity: 0.5;
+
+    span {
+      opacity: 0.7;
+    }
+  }
+
+  &:not(.base-button_icon) {
+    padding: 0 1.5em;
+  }
+}
+.base-button_primary {
+  &.base-button_gray {
+    @include primary($grey);
+  }
+
+  &.base-button_blue {
+    @include primary($blue);
+  }
+
+  &.base-button_red {
+    @include primary($red);
+  }
+
+  &.base-button_teal {
+    @include primary($teal);
+  }
+}
+.base-button_secondary {
+  &.base-button_gray {
+    @include secondary($grey);
+  }
+
+  &.base-button_blue {
+    @include secondary($blue);
+  }
+
+  &.base-button_red {
+    @include secondary($red);
+  }
+
+  &.base-button_teal {
+    @include secondary($teal);
+  }
+}
+.base-button_flat {
+  &.base-button_gray {
+    @include flat($grey);
+  }
+
+  &.base-button_blue {
+    @include flat($blue);
+  }
+
+  &.base-button_red {
+    @include flat($red);
+  }
+
+  &.base-button_teal {
+    @include flat($teal);
+  }
+}
