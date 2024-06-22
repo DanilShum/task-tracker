@@ -1,0 +1,39 @@
+auth:
+  login: Войти
+  sign-up: Регистрация
+
+common:
+  actions:
+    create: Создать
+    cancel: Отменить
+    confirm-password: Подтвердить пароль
+  time:
+    day: День
+    days: Дни
+    h: ч
+    hours: Часы
+    m: м
+    minutes: Минуты
+    month: Месяц
+    today: Сегодня
+    week: Неделя
+  from: От
+  name: Заголовок
+  to: До
+
+  fields:
+    email:
+      label: Email
+    password:
+      label: Пароль
+
+validation:
+  required: Это поле "@:{property}" обязаетльно.
+  min-length: Поле "@:{property}" должно быть не мение {min} символов.
+  same-as: Поле "@:{property}" должно совпадать "@:{equalTo}".
+
+locals:
+  ru: Ru
+  en: En
+
+

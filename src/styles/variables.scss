@@ -1,0 +1,65 @@
+$font-family: system-ui, -apple-system, sans-serif;
+$base-grey: #2c3e50;
+$light-grey: #758595;
+$grey-medium: #d5dade;
+$grey: #1f2735;
+$white: #fff;
+$sub-white: #f4f5f7;
+$black: #000;
+$teal: #218e84;
+$red: #c21a1a;
+$blue: #2061d7;
+
+$scrollbar-color: rgba(103, 111, 117, 0.4);
+$scrollbar-width: 11px;
+$table-header-color: #fbfbfb;
+
+$light: 300;
+$normal: 400;
+$medium: 500;
+$bold: 600;
+$bold-large: 700;
+
+@mixin scrollbar(
+  $y: true,
+  $x: false,
+  $onlyOnHover: true,
+  $width: $scrollbar-width
+) {
+  @if $y {
+    overflow-y: auto;
+  }
+
+  @if $x {
+    overflow-x: auto;
+  }
+
+  $initial-color: if($onlyOnHover, transparent, $scrollbar-color);
+
+  scrollbar-color: $initial-color transparent;
+  scrollbar-width: thin;
+
+  &::-webkit-scrollbar {
+    background-color: transparent;
+    width: $width;
+    height: $width;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-style: solid;
+    border-color: transparent;
+    border-width: floor($width / 3.5);
+    background-color: $initial-color;
+    background-clip: padding-box;
+    border-radius: ($width / 2);
+  }
+
+  @if $onlyOnHover {
+    &:hover {
+      scrollbar-color: $scrollbar-color transparent;
+      &::-webkit-scrollbar-thumb {
+        background-color: $scrollbar-color;
+      }
+    }
+  }
+}

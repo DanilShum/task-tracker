@@ -1,0 +1,39 @@
+auth:
+  login: Log in
+  sign-up: Sign Up
+
+common:
+  actions:
+    create: Create
+    cancel: Cancel
+    confirm-password: Confirm password
+  time:
+    day: Day
+    days: Days
+    h: h
+    hours: Hours
+    m: m
+    minutes: Minutes
+    month: Month
+    week: Week
+  from: From
+  name: Title
+  to: To
+  today: Today
+
+  fields:
+    email:
+      label: Email
+    password:
+      label: Password
+
+validation:
+  required: The field "@:{property}" is required.
+  min-length: The "@:{property}" field has a value, but it must have a min length of {min}.
+  same-as: The field "@:{property}" must match the "@:{equalTo} field".
+
+locals:
+  ru: Ru
+  en: En
+
+

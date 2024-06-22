@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.base-scroll-y {
+  @include scrollbar();
+}
+.base-visible-scroll-y {
+  @include scrollbar($y: true, $x: false);
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
