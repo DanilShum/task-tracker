@@ -3,21 +3,23 @@ import { RouterLink } from "vue-router";
 
 import "./base-button.scss";
 
+import type {
+  Color,
+  Size,
+  Type,
+  Variant,
+} from "@/components/ui/buttons/constants";
 import type { PropType } from "vue";
 
+import {
+  BUTTON_TYPES,
+  COLORS,
+  SIZE,
+  VARIANTS,
+} from "@/components/ui/buttons/constants";
 import { useProps } from "@/composables";
 
-const BUTTON_TYPES = { button: "button", submit: "submit" };
-const COLORS = { blue: "blue", gray: "gray", red: "red", teal: "teal" };
-const SIZE = { default: "default", large: "large", small: "small" };
-const VARIANTS = { flat: "flat", primary: "primary", secondary: "secondary" };
-
-type Color = keyof typeof COLORS;
-type Size = keyof typeof SIZE;
-type Type = keyof typeof BUTTON_TYPES;
-type Variant = keyof typeof VARIANTS;
-
-export default defineComponent({
+export const BaseButton = defineComponent({
   name: "BaseButton",
   props: {
     block: { type: Boolean as PropType<boolean>, default: false },

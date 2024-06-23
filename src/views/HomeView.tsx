@@ -13,14 +13,14 @@ export default defineComponent({
     return (
       <div>
         <BaseButton
-          text={"en"}
           color="blue"
+          text={"en"}
           whenClick={() => this.setI18nLanguage("en")}
         />
 
         <BaseButton
-          variant="secondary"
           text={"ru"}
+          variant="secondary"
           whenClick={() => this.setI18nLanguage("ru")}
         />
 

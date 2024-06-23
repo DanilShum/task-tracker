@@ -11,7 +11,7 @@ module.exports = {
     "plugin:@intlify/vue-i18n/recommended",
   ],
 
-  plugins: ["import"],
+  plugins: ["import", "react"],
 
   settings: {
     "vue-i18n": {
@@ -39,6 +39,17 @@ module.exports = {
     // JSX
     "react/jsx-max-props-per-line": "off",
     "react/jsx-wrap-multilines": "off",
+    "react/jsx-sort-props": [
+      "error",
+      {
+        callbacksLast: true,
+        shorthandFirst: false,
+        shorthandLast: false,
+        multiline: "ignore",
+        ignoreCase: false,
+        reservedFirst: ["key", "ref"],
+      },
+    ],
 
     // sort
     "import/order": [
