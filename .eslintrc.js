@@ -10,9 +10,7 @@ module.exports = {
     "plugin:prettier/recommended",
     "plugin:@intlify/vue-i18n/recommended",
   ],
-
   plugins: ["import", "react"],
-
   settings: {
     "vue-i18n": {
       localeDir: {

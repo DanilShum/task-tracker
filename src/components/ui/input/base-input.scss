@@ -1,0 +1,115 @@
+.base-input_time {
+  .base-input__field::-webkit-calendar-picker-indicator {
+    display: none;
+  }
+
+  .base-input__field[type="date"]::-webkit-input-placeholder {
+    visibility: hidden !important;
+  }
+}
+
+.base-input__fieldset {
+  background-color: rgba($grey, 0.05);
+  transition: background-color 200ms ease-in;
+
+  &:hover:not(:focus-within) {
+    transition: background-color 50ms ease-in;
+    background-color: rgba($grey, 0.04);
+  }
+
+  &:focus-within {
+    transition: background-color 50ms ease-in;
+    background-color: $white;
+  }
+}
+
+.base-input__label-text {
+  left: 14px;
+  top: 15px;
+  line-height: 14px;
+  color: $base-grey;
+  transform: translate3d(0, 0, 0) scale(1);
+  transform-origin: 0 0;
+  transition: transform 0.2s ease-in-out;
+
+  .base-input:focus-within &,
+  .base-input_has-value & {
+    color: $base-grey;
+    transform: translate3d(0, -50%, 0) scale(0.92);
+  }
+}
+
+.base-input__value,
+.base-input__field {
+  width: 100%;
+  height: 100%;
+  padding: 10px 15px;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 13px;
+  line-height: 16px;
+}
+
+.base-input__field {
+  display: block;
+  border: 0;
+  outline: 0;
+  margin: 0;
+  background: none;
+  appearance: none;
+  opacity: 0;
+
+  &:focus,
+  &[type="password"] {
+    opacity: 1;
+  }
+
+  &[type="number"] {
+    -moz-appearance: textfield;
+  }
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
+
+  /*
+    Хаки для нормального отображения
+    после автозаполнения
+  */
+  &:-webkit-autofill {
+    transition: background-color 1ms 9999s;
+
+    &:first-line {
+      font-family: $font-family !important;
+      font-size: 13px !important;
+      color: $base-grey !important;
+    }
+  }
+}
+
+.base-input__value {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 1;
+  pointer-events: none;
+  align-items: center;
+
+  & > * {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+}
+
+.base-input__field:focus + .base-input__value,
+.base-input__field[type="password"] + .base-input__value {
+  opacity: 0;
+
+  & * {
+    pointer-events: none;
+  }
+}

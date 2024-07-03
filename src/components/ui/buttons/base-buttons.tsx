@@ -1,10 +1,10 @@
 import { defineComponent } from "vue";
 
-import type { Color, Size, Variant } from "@/components/ui/buttons/constants";
+import type { Color, Icon, Size, Variant } from "@/components/ui/types";
 import type { PropType } from "vue";
 
 import { BaseButton } from "@/components";
-import { COLORS, SIZE, VARIANTS } from "@/components/ui/buttons/constants";
+import { COLORS, SIZE, VARIANTS } from "@/components/ui/constants";
 import { useProps } from "@/composables";
 
 type Button = {
@@ -42,7 +42,7 @@ export const BaseButtons = defineComponent({
             text={button.text ?? ""}
             variant={variant}
             whenClick={() => handleClick(button)}
-          ></BaseButton>
+          />
         ))}
       </div>
     );

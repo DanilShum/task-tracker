@@ -1,6 +1,6 @@
 import { defineComponent } from "vue";
 
-import BaseButton from "@/components/ui/buttons/base-button";
+import { BaseButton, BaseIcon, BaseInput } from "@/components";
 
 export default defineComponent({
   name: "HomeView",
@@ -15,6 +15,7 @@ export default defineComponent({
         <BaseButton
           color="blue"
           text={"en"}
+          v-slots={{ default: () => <BaseIcon name="cross" size={12} /> }}
           whenClick={() => this.setI18nLanguage("en")}
         />
 
@@ -23,6 +24,8 @@ export default defineComponent({
           variant="secondary"
           whenClick={() => this.setI18nLanguage("ru")}
         />
+
+        <BaseInput />
 
         <span>{this.$t("auth.login")}</span>
         <span>/{this.$i18n.locale}</span>
