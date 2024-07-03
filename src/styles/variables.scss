@@ -48,10 +48,10 @@ $bold-large: 700;
   &::-webkit-scrollbar-thumb {
     border-style: solid;
     border-color: transparent;
-    border-width: floor($width / 3.5);
+    border-width: floor(calc($width / 3.5));
     background-color: $initial-color;
     background-clip: padding-box;
-    border-radius: ($width / 2);
+    border-radius: calc($width / 2);
   }
 
   @if $onlyOnHover {

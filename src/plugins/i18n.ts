@@ -1,6 +1,5 @@
+import messages from "@intlify/unplugin-vue-i18n/messages";
 import { createI18n } from "vue-i18n";
-
-import type { DefineLocaleMessage } from "vue-i18n";
 
 const MAIN_LANG = "en";
 const SUPPORT_LOCALES = [MAIN_LANG, "ru"];
@@ -18,27 +17,9 @@ const helpers = {
 
     return MAIN_LANG;
   },
-  loadLocaleMessages: () => {
-    const context = require.context("@/locales/", false, /\.yml$/);
-
-    const rExp = /[a-z0-9-_]+/i;
-
-    return context
-      .keys()
-      .filter(Boolean)
-      .map((key) => ({ key, locale: key.match(rExp)?.[0] || "" }))
-      .reduce(
-        (mess, { key, locale }) => ({
-          ...mess,
-          [locale]: context(key).default,
-        }),
-        {}
-      ) as Record<Lang, DefineLocaleMessage>;
-  },
 };
 
 const lang = helpers.getInitLanguage();
-const messages = helpers.loadLocaleMessages();
 
 const i18n = createI18n({
   messages,

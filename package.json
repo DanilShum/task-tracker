@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint",
+    "dev": "vite --open",
+    "build": "vite build",
+    "preview": "vite preview",
     "i18n:report": "vue-cli-service i18n:report --src \"./src/**/*.?(js|vue|ts|tsx)\" --locales \"./src/locales/**/*.yml\""
   },
   "dependencies": {
@@ -23,12 +23,13 @@
     "yaml-loader": "^0.8.1"
   },
   "devDependencies": {
-    "@intlify/eslint-plugin-vue-i18n": "^3.0.0",
-    "@intlify/vue-i18n-loader": "^4.2.0",
+    "@intlify/eslint-plugin-vue-i18n": "3.0.0-next.13",
+    "@intlify/unplugin-vue-i18n": "^4.0.0",
     "@types/lodash-es": "^4.17.12",
     "@typescript-eslint/eslint-plugin": "^5.4.0",
     "@typescript-eslint/parser": "^5.4.0",
-    "@vue/cli-plugin-babel": "~5.0.0",
+    "@vitejs/plugin-vue": "^5.0.5",
+    "@vitejs/plugin-vue-jsx": "^4.0.0",
     "@vue/cli-plugin-eslint": "~5.0.0",
     "@vue/cli-plugin-router": "~5.0.0",
     "@vue/cli-plugin-typescript": "~5.0.0",
@@ -44,9 +45,9 @@
     "postcss": "^8.4.38",
     "prettier": "^2.4.1",
     "sass": "^1.32.7",
-    "sass-loader": "^12.0.0",
     "tailwindcss": "^3.4.4",
     "typescript": "^5.4.5",
-    "vue-cli-plugin-i18n": "~2.3.2"
+    "vite": "^5.3.1",
+    "vite-svg-loader": "^5.1.0"
   }
 }
