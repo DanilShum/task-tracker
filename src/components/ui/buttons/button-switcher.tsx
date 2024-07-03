@@ -1,10 +1,10 @@
 import { computed, defineComponent } from "vue";
 
-import type { Color, Size } from "@/components/ui/buttons/constants";
+import type { Color, Size } from "@/components/ui/types";
 import type { PropType } from "vue";
 
 import { BaseButton } from "@/components";
-import { COLORS, SIZE } from "@/components/ui/buttons/constants";
+import { COLORS, SIZE } from "@/components/ui/constants";
 import { useProps } from "@/composables";
 
 type Id = string | number;

@@ -1,6 +1,6 @@
 /* eslint-disable import/no-duplicates */
 import { format } from "date-fns";
-import { enUS, ru, tr, zhCN } from "date-fns/locale";
+import { enUS, ru } from "date-fns/locale";
 
 import { convertIsoToDate } from "./dates";
 
@@ -9,8 +9,6 @@ import { i18n } from "@/plugins/i18n";
 export const LocalesDictionary = {
   ru: ru,
   en: enUS,
-  tr: tr,
-  "zh-Hans": zhCN,
 };
 
 const boolean = (value?: boolean) =>

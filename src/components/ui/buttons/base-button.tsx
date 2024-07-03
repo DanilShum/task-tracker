@@ -3,42 +3,36 @@ import { RouterLink } from "vue-router";
 
 import "./base-button.scss";
 
-import type {
-  Color,
-  Size,
-  Type,
-  Variant,
-} from "@/components/ui/buttons/constants";
+import type { ButtonType, Color, Size, Variant } from "@/components/ui/types";
 import type { PropType } from "vue";
 
-import {
-  BUTTON_TYPES,
-  COLORS,
-  SIZE,
-  VARIANTS,
-} from "@/components/ui/buttons/constants";
+import { BUTTON_TYPES } from "@/components/ui/buttons/constants";
+import { COLORS, SIZE, VARIANTS } from "@/components/ui/constants";
 import { useProps } from "@/composables";
 
 export const BaseButton = defineComponent({
   name: "BaseButton",
   props: {
     block: { type: Boolean as PropType<boolean>, default: false },
+    circle: { type: Boolean as PropType<boolean>, default: false },
     color: { type: String as PropType<Color>, default: COLORS.gray },
     disabled: { type: Boolean as PropType<boolean>, default: false },
     size: { type: String as PropType<Size>, default: SIZE.default },
     text: { type: [String, Number] as PropType<string | number>, default: "" },
     to: { type: [String, Object] as PropType<any>, default: "" },
-    type: { type: String as PropType<Type>, default: BUTTON_TYPES.button },
+    type: {
+      type: String as PropType<ButtonType>,
+      default: BUTTON_TYPES.button,
+    },
     variant: { type: String as PropType<Variant>, default: VARIANTS.primary },
     whenClick: { type: Function as PropType<() => void> },
-    withIcon: { type: Boolean as PropType<boolean>, default: false },
   },
 
   setup(props) {
-    const { block, color, disabled, variant, size, withIcon } = useProps(props);
+    const { block, circle, color, disabled, variant, size } = useProps(props);
 
     const classes = computed(() => {
-      const iconClass = `base-button_icon rounded-full ${
+      const circleClass = `base-button_icon rounded-full ${
         size.value === "small"
           ? "w-8 min-w-8"
           : size.value === "large"
@@ -53,7 +47,7 @@ export const BaseButton = defineComponent({
         "flex w-full": block.value,
         "h-12 text-sm font-bold": size.value === "large",
         "h-8": size.value === "small",
-        [iconClass]: withIcon.value,
+        [circleClass]: circle.value,
         [`base-button_${color.value}`]: true,
       };
     });
