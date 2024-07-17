@@ -1,7 +1,8 @@
 import { createPinia } from "pinia";
 import { createApp } from "vue";
+import VueTippy from "vue-tippy";
 
-import App from "./App.vue";
+import App from "./App.tsx";
 import router from "./router";
 
 import { i18n, setI18nLanguage } from "@/plugins/i18n";
@@ -13,5 +14,6 @@ app.config.globalProperties.setI18nLanguage = setI18nLanguage;
 app.use(i18n as any);
 app.use(createPinia());
 app.use(router);
+app.use(VueTippy);
 
 app.mount("#app");
