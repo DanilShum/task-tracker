@@ -20,6 +20,7 @@
     "vue-i18n": "^9.1.0",
     "vue-multiselect": "^3.0.0",
     "vue-router": "^4.0.3",
+    "vue-tippy": "^6.4.4",
     "yaml-loader": "^0.8.1"
   },
   "devDependencies": {

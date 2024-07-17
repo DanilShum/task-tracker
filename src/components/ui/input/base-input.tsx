@@ -1,19 +1,21 @@
 import { computed, defineComponent, ref } from "vue";
 
-import type { Size } from "@/components/ui/types";
-import type { InputType } from "@/components/ui/types";
+import type { Color, InputType, Size } from "@/components/ui/types";
 import type { PropType } from "vue";
 
-import { SIZE } from "@/components/ui/constants";
+import { COLORS, SIZE } from "@/components/ui/constants";
 import { INPUT_TYPES } from "@/components/ui/input/constants";
 import { useProps } from "@/composables";
 
 import "./base-input.scss";
 
+// TODO нужно экранирование входных данных
+
 export const BaseInput = defineComponent({
   name: "BaseInput",
   props: {
     autofocus: { type: Boolean, default: false },
+    color: { type: String as PropType<Color>, default: COLORS.gray },
     disabled: { type: Boolean, default: false },
     hasError: { type: Boolean, default: false },
     label: { type: String, default: "" },
@@ -21,16 +23,26 @@ export const BaseInput = defineComponent({
     min: { type: [String, Number], default: "" },
     readonly: { type: Boolean, default: false },
     size: { type: String as PropType<Size>, default: SIZE.default },
-    type: { type: String as PropType<InputType>, default: "text" },
+    type: { type: String as PropType<InputType>, default: INPUT_TYPES.text },
     uppercase: { type: Boolean, default: false },
     value: { type: [String, Number], default: "" },
     whenBlur: { type: Function as PropType<() => void> },
     whenChange: { type: Function as PropType<(value: string) => void> },
     whenInput: { type: Function as PropType<(value: string) => void> },
+    whenKeyup: { type: Function as PropType<(value: KeyboardEvent) => void> },
   },
   setup(props) {
-    const { value, type, size, hasError, whenInput, whenBlur, whenChange } =
-      useProps(props);
+    const {
+      color,
+      hasError,
+      size,
+      type,
+      value,
+      whenBlur,
+      whenChange,
+      whenInput,
+      whenKeyup,
+    } = useProps(props);
 
     const inputRef = ref<HTMLInputElement>();
 
@@ -39,7 +51,10 @@ export const BaseInput = defineComponent({
 
     const classes = computed(() => ({
       "!border-red-600": hasError.value,
-      "focus-within:border-teal-600": !hasError.value,
+      "focus-within:border-blue-600": color.value === "blue" && !hasError.value,
+      "focus-within:border-gray-600": color.value === "gray" && !hasError.value,
+      "focus-within:border-read-600": color.value === "red" && !hasError.value,
+      "focus-within:border-teal-600": color.value === "teal" && !hasError.value,
       "h-12": size.value === SIZE.default,
       "h-14": size.value === SIZE.large,
       "h-8": size.value === SIZE.small,
@@ -48,6 +63,7 @@ export const BaseInput = defineComponent({
     const handleBlur = (): void => whenBlur.value?.();
     const handleChange = (value: string): void => whenChange.value?.(value);
     const handleInput = (value: string): void => whenInput.value?.(value);
+    const handleKeyup = (event: KeyboardEvent) => whenKeyup.value?.(event);
     const handleSelect = () => inputRef.value?.focus();
 
     return {
@@ -55,6 +71,7 @@ export const BaseInput = defineComponent({
       handleBlur,
       handleChange,
       handleInput,
+      handleKeyup,
       handleSelect,
       hasValue,
       inputRef,
@@ -71,6 +88,7 @@ export const BaseInput = defineComponent({
       handleBlur,
       handleChange,
       handleInput,
+      handleKeyup,
       hasValue,
       isTime,
       label,
@@ -82,7 +100,6 @@ export const BaseInput = defineComponent({
       value,
     } = this;
 
-    // @ts-ignore
     return (
       <div
         class={[
@@ -93,7 +110,7 @@ export const BaseInput = defineComponent({
         <fieldset
           class={[
             classes,
-            "base-input__fieldset relative m-0 box-border flex w-full appearance-none items-center rounded border border-solid border-transparent p-0",
+            "base-input__fieldset relative m-0 box-border flex w-full appearance-none items-center rounded border-2 border-solid border-transparent p-0",
           ]}
         >
           {label && (
@@ -131,8 +148,13 @@ export const BaseInput = defineComponent({
                 type={type}
                 value={value}
                 onBlur={handleBlur}
-                onChange={(event) => handleChange(event.target?.value)}
-                onInput={(event) => handleInput(event.target?.value)}
+                onChange={(event) =>
+                  handleChange((event.target as HTMLInputElement)?.value)
+                }
+                onInput={(event) =>
+                  handleInput((event.target as HTMLInputElement)?.value)
+                }
+                onKeyup={handleKeyup}
               />
             )}
 
